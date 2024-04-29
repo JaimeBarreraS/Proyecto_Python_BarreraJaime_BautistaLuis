@@ -1,0 +1,22 @@
+[
+    {
+        "id": 139731614,
+        "nombre": "hdhdhsa",
+        "apellido": "dhagga",
+        "direccion": "cucuta",
+        "acudiente": "ajhgfgf",
+        "telefono": 131441,
+        "estado": "ingreso",
+        "riesgo": "alto"
+    },
+    {
+        "id": 8786286,
+        "nombre": "jaime",
+        "apellido": "barrera",
+        "direccion": "tibu",
+        "acudiente": "freiler",
+        "telefono": 3123702377,
+        "estado": "ingreso",
+        "riesgo": "alto"
+    }
+]
