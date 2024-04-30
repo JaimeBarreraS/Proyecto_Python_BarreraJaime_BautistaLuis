@@ -1,6 +1,6 @@
 import json
 
-DATA_FILE="Campers.json" #Ruta del archivo
+DATA_FILE="campus_lands.json" #Ruta del archivo
 
 #cargar los archivos desde el json
 def load_data():
@@ -8,7 +8,20 @@ def load_data():
         with open(DATA_FILE, 'r') as file:
             data=json.load(file)
     except FileNotFoundError:
-        data=[]
+        data={
+            "campers": [],
+            "trainers": [],
+            "coordinador": [],
+            "rutas": [],
+            "areas": [
+                {"nombre":"Area 1", "ruta":None, "campers":[]},
+                {"nombre":"Area 2", "ruta":None, "campers":[]},
+                {"nombre":"Area 2", "ruta":None, "campers":[]}
+            ],
+            "matriculas": [],
+            
+            
+            }
     return data
 
 #guardar los archivos
@@ -17,96 +30,139 @@ def save_data(data):
         json.dump(data,file, indent=4)
 
     
-#menu 
+#menu principal
 while True:
-    print("--------Campers-------")
+    print("----Gestion Academica CampusLands----")
     print("")
-    print("1. Crear campers")
-    print("2. Leer Campers")
-    print("3. Actualizar Campers")
-    print("4. Eliminar Campers")
-    print("5. Salir")
+    print("1. Registrar Camper")
+    print("2. Registrar Trainer")
+    print("3. Registar Coordinar")
+    print("4. Crear ruta de entrenamiento")
+    print("5. Registar notas de campers (coordinador)")
+    print("6. Asignar campers y traines a rutas")
+    print("7. Generar reportes")
+    print("8. Gestionar matriculas")
+    print("9. Salir")
     print("")
-    
-    opcion = int(input("Eliga un numero del 1 al 5: "))
+
+    opcion = int(input("Eliga un numero del 1 al 9: "))
     print("")
 
     if opcion == 1: #crear camper
         camper = {
-            "id" : int(input("Ingrese el numero de ID del camper: ")),  
-            "nombre" : input("Ingrese el nombre del camper: "),
-            "apellido" : input("Ingrese el apellido del camper: "),
+            "# de Identificacion" : int(input("Ingrese el numero de CC o TI del camper: ")),  
+            "nombres" : input("Ingrese el nombre del camper: "),
+            "apellidos" : input("Ingrese el apellido del camper: "),
             "direccion" : input("Ingrese la dirección del camper: "),
             "acudiente" : input("Ingrese nombre del acudiente del camper: "),
-            "telefono" : int(input("Ingrese el numero de telefono del camper: (celular o fijo): ")),
-            "estado" : input("Ingrese el estado del camper: (ingreso, inscrito, aprobado, cursando, graduado, expulsado, retirado): "),
-            "riesgo" : input("ingrese el riesgo del camper: (alto, medio, bajo): "), #supongo que eso se refiere a riesgo
+            "Fijo" : int(input("Ingrese el numero de fijo del camper: ")),
+            "Telefono" : int(input("Ingrese el numero de telefono del camper:")),
+            "estado" : input("Ingrese el estado del camper: (ingreso): "),
+            "riesgo" : input("ingrese el riesgo del camper: (bajo): "), 
         }
         data = load_data()
-        data.append(camper)
+        data["campers"].append(camper)
         save_data(data)
         print("")
         print("Camper creado!!")
         print("")
+
+    elif opcion == 2: #registrar un nuevo trainer
+        trainer={
+           "# de Identificacion" : int(input("Ingrese el numero de CC del Trainer: ")),
+           "nombres" : input("Ingrese el nombre del Trainer: "),
+           "apellidos" : input("Ingrese el apellido del Trainer: "),
+           "rutas_asignadas":[]
+        }
+        data = load_data()
+        data["trainers"].append(trainer)
+        save_data(data)
+        print("")
+        print("Trainer creado!!")
+        print("")
+    
+    elif opcion == 3: #registrar un nuevo coordinador
+        coordinador={
+           "# de Identificacion" : int(input("Ingrese el numero de CC del Coordinador: ")),
+           "nombres" : input("Ingrese el nombre del Coordinador: "),
+           "apellidos" : input("Ingrese el apellido del Coordinador: "),
+        }
+        data = load_data()
+        data["coordinador"].append(coordinador)
+        save_data(data)
+        print("")
+        print("Coordinador creado!!")
+        print("")
+    
+    elif opcion == 4: #crear nueva ruta de entrenamiento
+        ruta_nombre=input("Ingrese el nombre de la ruta (NodeJS, Java, NetCore): ")
+        if ruta_nombre.lower() in ["nodejs","java","netcore"]:
+            ruta={
+                "nombre": ruta_nombre.lower(),
+                "modulos":[]
+            }
+            modulos = ["Fundamentos de programacion","Programacioon Web","Programacioon formal","Bases de datos","Backend"]
+            print("""- Fundamentos de programación (Introducción a la algoritmia, PSeInt y Python)
+- Programación Web (HTML, CSS y Bootstrap).
+- Programación formal (Java, JavaScript, C#).
+- Bases de datos (Mysql, MongoDb y Postgresql).
+- Backend (NetCore, Spring Boot, NodeJS y Express).
+""")
+            for modulo in modulos:
+                print(f"Configurando modulo: {modulo}")
+                detalle_modulo={
+                    "nombre": modulo,
+                    "contenido": input(f"Ingrese el contenido del modulo '{modulo}':")
+                }
+                ruta["modulos"].append(detalle_modulo)
+            data = load_data()
+            data["rutas"].append(ruta)
+            save_data(data)
+            print("")
+            print("Ruta de entrenamiento creada!")
+            print("")
+        else:
+            print("Ruta de entrenamiento no valida. Las opciones validas son: NodeJS, Java, NetCore.")
+
+    elif opcion == 5: #registrar la nota de los campers
+        data = load_data()
+        campers=data["campers"]
+        coordinador=data["coordinador"]
+
+        if not coordinador:
+            print("No hay coordinador registrado")
+        else:
+            print(f"Binvenido, coordinador {coordinador['nombres']} {coordinador['apellidos']}")
+            #print("Binvenido, coordinador" coordinador["# de Identificacion"], coordinador["nombres"], coordinador["apellidos"] )
+            for camper in campers:
+                if camper['estado'] == "ingreso":
+                    nota_teorica=float(input(f"Ingrese la nota teorica del camper{camper['nombres']} {camper['apellidos']}: "))
+                    nota_practica=float(input(f"Ingrese la nota practica del camper{camper['nombres']} {camper['apellidos']}: "))
+                    promedio = (nota_teorica * 0.3) + (nota_practica * 0.6)
+                    if promedio >= 60:
+                        camper["estado"] = "Aprobado"
+                    else: 
+                        camper["estado"] = "Inscrito"
+                    camper["nota_final"] = promedio
+            save_data(data)
+            print("")
+            print("Notas registradas !!")
+            print("")
+            break
+
+    
+
+    
+
         
-    elif opcion == 2: #leer campers 
-        data = load_data()
-        for camper in data:
-            print(f"ID: {camper['id']}")
-            print(f"Nombre: {camper['nombre']}")
-            print(f"Apellido: {camper['apellido']}")
-            print(f"Direccion: {camper['direccion']}")
-            print(f"Acudiente: {camper['acudiente']}")
-            print(f"Telefono: {camper['telefono']}")
-            print(f"Estado: {camper['estado']}")
-            print(f"Riesgo: {camper['riesgo']}")
-            print("----------------------------------")
     
-    elif opcion == 3: #actualizar campers
-        for camper in data:
-            print(f"{camper['id']}")
-
-        camper_id = int(input("Ingrese el ID del camper para actualizar: "))
-        data = load_data()
-        for camper in data:
-            print("")
-            if camper['id'] == camper_id: #compara si el id ingresado con el id guardado
-                 print("")
-                 camper ['nombre'] = input("Ingrese el nombre del camper: ")
-                 camper ['apellido'] = input("Ingrese el apellido del camper: ")
-                 camper ['direccion'] = input("Ingrese la dirección del camper: ")
-                 camper ['acudiente'] = input("Ingrese nombre del acudiente del camper: ")
-                 camper ['telefono'] = int(input("Ingrese el numero de telefono del camper: (celular o fijo): "))
-                 camper ['estado'] = input("Ingrese el estado del camper: (ingreso, inscrito, aprobado, cursando, graduado, expulsado, retirado): ")
-                 camper ['riesgo'] = input("ingrese el riesgo del camper: (alto, medio, bajo): ")
-                 save_data(data)
-                 print("")
-                 print("Camper actualizado!!")
-                 break
-    
-    elif opcion == 4: #eliminar camper
-        for camper in data:
-            print(f"{camper['id']}")
-
-        camper_id=int(input("Ingrese el ID del camper para eliminar: "))
-        data = load_data()
-        for i, camper in enumerate(data):
-            print("")
-            if camper['id'] == camper_id: 
-                del data[i]
-                save_data(data)
-                print("")
-                print("Camper eliminado!!")
-
-    elif opcion == 5:
-        break 
-
-    #hecho por jaime barrera cc 1093925253 
+            
+#hecho por jaime barrera cc 1093925253 
     
 
 
 #fechas de subidas (NO BORRAR)
 #1 28-04-2024       10:00 pm    (por Jaime Barrera)
+#2 30-04-2024       12:45 pm    (por Jaime Barrera)
 
-#COSAS POR ARREGLAR 
-#1 Como quitar las comas al final de leer. SOLUCIONADO
+#COSAS POR ARREGLAR #1 Como quitar las comas al final de leer. SOLUCIONADO

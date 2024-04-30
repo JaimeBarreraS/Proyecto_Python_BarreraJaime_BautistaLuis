@@ -1,0 +1,111 @@
+{
+    "campers": [
+        {
+            "# de Identificacion": 1093925253,
+            "nombres": "jaime",
+            "apellidos": "barrera",
+            "direccion": "tibu",
+            "acudiente": "no tiene",
+            "telefono": 3123702377,
+            "estado": "ingreso",
+            "riesgo": "bajo"
+        },
+        {
+            "# de Identificacion": 1234,
+            "nombres": "Jhonatan",
+            "apellidos": "oma\u00f1a",
+            "direccion": "cucuta",
+            "acudiente": "no tiene",
+            "telefono": 31452,
+            "estado": "ingreso",
+            "riesgo": "bajo"
+        },
+        {
+            "# de Identificacion": 12121212,
+            "nombres": "aaaaaaa",
+            "apellidos": "aaaaaaaa",
+            "direccion": "bbbb",
+            "acudiente": "aaaaa",
+            "Fijo": 123,
+            "Telefono": 321,
+            "estado": "ingreso",
+            "riesgo": "bajo"
+        }
+    ],
+    "trainers": [
+        {
+            "# de Identificacion": 1212,
+            "nombres": "Stiven",
+            "apellidos": "Carvajal",
+            "rutas_asignadas": []
+        },
+        {
+            "# de Identificacion": 3214,
+            "nombres": "Stiven",
+            "apellidos": "gomes",
+            "rutas_asignadas": []
+        }
+    ],
+    "coordinador": [
+        {
+            "# de Identificacion": 1010,
+            "nombres": "Pedro",
+            "apellidos": "pedro"
+        },
+        {
+            "# de Identificacion": 101010,
+            "nombres": "jaime",
+            "apellidos": "oma\u00f1a"
+        },
+        {
+            "# de Identificacion": 456,
+            "nombres": "bbbb",
+            "apellidos": "bbbb"
+        }
+    ],
+    "rutas": [
+        {
+            "nombre": "java",
+            "modulos": [
+                {
+                    "nombre": "Fundamentos de programacion",
+                    "contenido": "Python"
+                },
+                {
+                    "nombre": "Programacioon Web",
+                    "contenido": "HTML"
+                },
+                {
+                    "nombre": "Programacioon formal",
+                    "contenido": "JavaScript"
+                },
+                {
+                    "nombre": "Bases de datos",
+                    "contenido": "Mysql"
+                },
+                {
+                    "nombre": "Backend",
+                    "contenido": "Espress"
+                }
+            ]
+        }
+    ],
+    "areas": [
+        {
+            "nombre": "Area 1",
+            "ruta": null,
+            "campers": []
+        },
+        {
+            "nombre": "Area 2",
+            "ruta": null,
+            "campers": []
+        },
+        {
+            "nombre": "Area 2",
+            "ruta": null,
+            "campers": []
+        }
+    ],
+    "matriculas": []
+}
