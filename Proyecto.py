@@ -138,7 +138,7 @@ while True:
                 if camper['estado'] == "ingreso":
                     nota_teorica=float(input(f"Ingrese la nota teorica del camper{camper['nombres']} {camper['apellidos']}: "))
                     nota_practica=float(input(f"Ingrese la nota practica del camper{camper['nombres']} {camper['apellidos']}: "))
-                    promedio = (nota_teorica * 0.3) + (nota_practica * 0.6)
+                    promedio = (nota_teorica * 0.3) + (nota_practica* 0.6) 
                     if promedio >= 60:
                         camper["estado"] = "Aprobado"
                     else: 
@@ -149,20 +149,35 @@ while True:
             print("Notas registradas !!")
             print("")
             break
-
-    
-
-    
-
+    elif opcion == 7: 
+      definitivas = load_data()
+      for camper in campers:
+                if camper['evaluacion periodica'] == "aprobado":
+                    evaluacion_nota_teorica=float(input(f"Ingrese la nota teorica del camper{camper['nombres']} {camper['apellidos']}: "))
+                    evaluacion_nota_practica=float(input(f"Ingrese la nota practica del camper{camper['nombres']} {camper['apellidos']}: "))
+                    total_notas_trabajos = 0
+                    for i in range(total_notas_trabajos):
+                     nota_trabajo = float(input(f"Ingrese la nota del trabajo {i+1} del camper {camper['nombres']} {camper['apellidos']}: "))
+                     total_notas_trabajos += nota_trabajo
+                     promedio_trabajos = total_notas_trabajos / nota_trabajo
+                     promedio = (evaluacion_nota_teorica * 0.3) + (evaluacion_nota_practica * 0.6) + (promedio_trabajos * 0.1)
+                    if promedio >= 60:
+                          camper["definitiva"] = "Aprobado"
+                    else: 
+                      camper["definitiva"]= "rendimiento bajo"
+    data = load_data()
+    data["campers"].append(camper)
+    save_data(data)
+                    
         
     
             
 #hecho por jaime barrera cc 1093925253 
-    
+#hecho por luis bautista cc 1091356439
 
 
 #fechas de subidas (NO BORRAR)
 #1 28-04-2024       10:00 pm    (por Jaime Barrera)
 #2 30-04-2024       12:45 pm    (por Jaime Barrera)
-
+#3 01-05-2024                   (por luis bautista)
 #COSAS POR ARREGLAR #1 Como quitar las comas al final de leer. SOLUCIONADO
