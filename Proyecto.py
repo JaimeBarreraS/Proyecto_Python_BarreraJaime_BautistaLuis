@@ -14,9 +14,9 @@ def load_data():
             "coordinador": [],
             "rutas": [],
             "areas": [
-                {"nombre":"Area 1", "ruta":None, "campers":[]},
-                {"nombre":"Area 2", "ruta":None, "campers":[]},
-                {"nombre":"Area 2", "ruta":None, "campers":[]}
+                {"nombre":"Area 1", "capacidad_maxima":33, "ruta":None, "campers":[]}, 
+                {"nombre":"Area 2", "capacidad_maxima":33, "ruta":None, "campers":[]},
+                {"nombre":"Area 2", "capacidad_maxima":33, "ruta":None, "campers":[]}
             ],
             "matriculas": [],
             
@@ -101,7 +101,13 @@ while True:
                 "nombre": ruta_nombre.lower(),
                 "modulos":[]
             }
-            modulos = ["Fundamentos de programacion","Programacioon Web","Programacioon formal","Bases de datos","Backend"]
+            modulos = [
+                {"nombre": "Fundamentos de Programacion", "contenido": "Introducción a la algoritmia, PSeInt y Python"},
+                {"nombre": "Programacion Web", "contenido": "HTML, CSS y Bootstrap"},
+                "Programacion formal",
+                "Base de datos",
+                "Backend",
+            ]
             print("""- Fundamentos de programación (Introducción a la algoritmia, PSeInt y Python)
 - Programación Web (HTML, CSS y Bootstrap).
 - Programación formal (Java, JavaScript, C#).
@@ -109,17 +115,21 @@ while True:
 - Backend (NetCore, Spring Boot, NodeJS y Express).
 """)
             for modulo in modulos:
-                print(f"Configurando modulo: {modulo}")
-                detalle_modulo={
-                    "nombre": modulo,
-                    "contenido": input(f"Ingrese el contenido del modulo '{modulo}':")
-                }
-                ruta["modulos"].append(detalle_modulo)
-            data = load_data()
+                if isinstance(modulo, dict):
+                    ruta["modulos"].append(modulo)
+                else: 
+                    print(f"Configurando módulo: {modulo}")
+                    detalle_modulo={
+                        "nombre": modulo,
+                        "contenido":input(f"ingrese el contenido del módulo '{modulo}': ")
+                    }
+                    ruta["modulos"].append(detalle_modulo)
+
+            data=load_data()
             data["rutas"].append(ruta)
             save_data(data)
             print("")
-            print("Ruta de entrenamiento creada!")
+            print("Ruta de entrenamiento creada!!")
             print("")
         else:
             print("Ruta de entrenamiento no valida. Las opciones validas son: NodeJS, Java, NetCore.")
@@ -130,44 +140,201 @@ while True:
         coordinador=data["coordinador"]
 
         if not coordinador:
-            print("No hay coordinador registrado")
+            print("No hay coordinador registrado.")
         else:
             print(f"Binvenido, coordinador {coordinador['nombres']} {coordinador['apellidos']}")
-            #print("Binvenido, coordinador" coordinador["# de Identificacion"], coordinador["nombres"], coordinador["apellidos"] )
+            
             for camper in campers:
                 if camper['estado'] == "ingreso":
                     nota_teorica=float(input(f"Ingrese la nota teorica del camper{camper['nombres']} {camper['apellidos']}: "))
                     nota_practica=float(input(f"Ingrese la nota practica del camper{camper['nombres']} {camper['apellidos']}: "))
                     promedio = (nota_teorica * 0.3) + (nota_practica* 0.6) 
-                    if promedio >= 60:
-                        camper["estado"] = "Aprobado"
+                    if promedio >= 0.6:
+                        camper["estado"] = "aprobado"
                     else: 
-                        camper["estado"] = "Inscrito"
+                        camper["estado"] = "inscrito"
                     camper["nota_final"] = promedio
             save_data(data)
             print("")
             print("Notas registradas !!")
             print("")
-            break
-    elif opcion == 7: 
-      definitivas = load_data()
-      for camper in campers:
-                if camper['evaluacion periodica'] == "aprobado":
-                    evaluacion_nota_teorica=float(input(f"Ingrese la nota teorica del camper{camper['nombres']} {camper['apellidos']}: "))
-                    evaluacion_nota_practica=float(input(f"Ingrese la nota practica del camper{camper['nombres']} {camper['apellidos']}: "))
-                    total_notas_trabajos = 0
-                    for i in range(total_notas_trabajos):
-                     nota_trabajo = float(input(f"Ingrese la nota del trabajo {i+1} del camper {camper['nombres']} {camper['apellidos']}: "))
-                     total_notas_trabajos += nota_trabajo
-                     promedio_trabajos = total_notas_trabajos / nota_trabajo
-                     promedio = (evaluacion_nota_teorica * 0.3) + (evaluacion_nota_practica * 0.6) + (promedio_trabajos * 0.1)
-                    if promedio >= 60:
-                          camper["definitiva"] = "Aprobado"
-                    else: 
-                      camper["definitiva"]= "rendimiento bajo"
-    data = load_data()
-    data["campers"].append(camper)
-    save_data(data)
+            
+    elif opcion == 6: #Asignar campers y trainers a rutas de entrenamiento
+        data=load_data
+        camper=[c for c in data["campers"] if c["estado"] == "aprobado"]
+        rutas=data["rutas"]
+        areas=data["areas"]
+        trainers=data["trainers"]
+
+        for camper in campers:
+            print(f"Asignando ruta para el camper {camper['nombres']} {camper['apellidos']}")
+            for i, ruta in enumerate(rutas):
+                print(f"{i+1}. {ruta['nombre']}")
+            opcion_ruta=int(input("Seleccione una ruta: "))
+            ruta_seleccionada=rutas[opcion_ruta-1]
+
+            area_disponible=None
+            for area in areas:
+                if area["ruta"] == ruta_seleccionada["nombre"] and len(area["campers"]) <33:
+                    area_disponible = area
+                    break
+
+            if area_disponible:
+                camper["ruta_asignada"]=ruta_seleccionada["nombre"]
+                area_disponible["campers"].append(camper)
+                print(f"El camper {camper['nombres']} {camper['apellidos']} ha sido asignado a la ruta {ruta_seleccionada['nombre']} en el area {area_disponible['nombre']}.")
+
+                trainer_disponible=None
+                for trainer in trainers:
+                    if ruta_seleccionada["nombre"] not in trainer["rutas_asignadas"]:
+                        trainer_disponible=trainer
+                        trainer["rutas_asignadas"].append(ruta_seleccionada["nombre"])
+                        break
+
+                if trainer_disponible:
+                    print(f"El trainer {trainer_disponible['nombres']} {trainer_disponible['apellidos']} ha sido asignado a la ruta {ruta_seleccionada['nombre']}.")
+                else:
+                    print(f"No hay trainers disponibles para asignar a la ruta {ruta_seleccionada['nombre']}.")
+            else: 
+                print(f"No hay areas disponibles para la ruta {ruta_seleccionada['nombre']}. El camper {camper['nombres']} {camper['apellidos']} no puede ser asignado.")
+
+        save_data(data)
+
+    elif opcion == 7: #generar reportes
+        datal=load_data()
+        campers=data["campers"]
+        trainers=data["trainers"]
+        rutas=data["rutas"]
+
+        print("----Modulo de Reportes----")
+        print("")
+        print("1. Evaluar campers")
+        print("2. Listar campers inscritos")
+        print("3. listar campers aprobados")
+        print("4. Listar trainers")
+        print("5. Listar campers con bajo rendimiento")
+        print("6. listar camper y trainers por ruta")
+        print("7. mostrar estadisticas de modulos" )
+        print("")
+        
+        opcion_reporte=int(input("Eliga un numero del 1 al 7: "))
+
+        if opcion_reporte == 1: #evaluar campers
+            for ruta in rutas:
+                print(f"Ruta: {ruta['nombre'].upper()}")
+                for modulo in ruta["modulos"]:
+                    print(f"Evaluando modulo {modulo['nombre']}")
+                    for camper in campers:
+                        if"ruta_asignada" in camper and camper["ruta_asignada"] == ruta["nombre"]:
+                            nota_teorica=float(input(f"Ingrese la nota teorica del camper {camper['nombres']} {camper['apellidos']} para el modulo {modulo['nombre']}: "))
+                            nota_practica=float(input(f"Ingrese la nota practica del camper {camper['nombres']} {camper['apellidos']} para el modulo {modulo['nombre']}: "))
+                            promedio_pruebas=(nota_teorica * 0.3) + (nota_practica * 0.6)
+                            if promedio_pruebas >= 0.6:
+                                estado_pruebas="aprobado"
+                            else:
+                                estado_pruebas="reprobado"
+                            
+                            quizes_trabajos = []
+                            num_quizes_trabajos = int(input(f"Ingrese el numero de quices y trabajos del camper {camper['nombres']} {camper['apellidos']} para el modulo {modulo['nombre']}: "))
+                            for i in range(num_quizes_trabajos):
+                                nota_quiz_trabajo = float(input(f"Ingrese la nota del quiz/trabajo {i+1}: "))
+                                quizes_trabajos.append(nota_quiz_trabajo)
+                            promedio_quizes_trabajos = sum(quizes_trabajos) / num_quizes_trabajos
+
+                            nota_final = (promedio_pruebas * 0.9) + (promedio_quizes_trabajos * 0.1)
+                            if nota_final >= 0.6:
+                                estado_final="aprobado"
+                            else:
+                                estado_final="reprobado"
+
+                            camper[modulo['nombre']]={
+                                "nota_teorica": nota_teorica,
+                                "nota_practica": nota_practica,
+                                "promedio_pruebas": promedio_pruebas,
+                                "estado_pruebas": estado_pruebas,
+                                "quizes_trabajos": quizes_trabajos,
+                                "promedio_quizes_trabajos": promedio_quizes_trabajos,
+                                "nota_final": nota_final,
+                                "estado_final": estado_final
+                            }
+            save_data(data)
+            print("Evaluacion de campers completada.")
+
+        elif opcion_reporte == 2: #listar campers inscritos
+            campers_inscritos = [c for c in campers if c["estado"] == "inscrito"]
+            if campers_inscritos:
+                print("Campers inscritos:")
+                for c in campers_inscritos:
+                    print(f"{c['nombres']} {c['apellidos']}")
+                else:
+                    print("No hay campers inscritos")
+
+        elif opcion_reporte == 3: #listar campers aprobados
+            campers_aprobados = [c for c in campers if c["estado"] == "aprobado"]
+            if campers_aprobados:
+                print("Campers aprobados:")
+                for c in campers_aprobados:
+                    print(f"{c['nombres']} {c['apellidos']}")
+                else:
+                    print("No hay campers aprobados.")
+
+        elif opcion_reporte == 4: #listar trainers 
+            if trainers:
+                print("Trainers de CampusLands:")
+                for t in trainers:
+                    print(f"{t['nombres']} {t['apellidos']}")
+            else:
+                print("No hay trainers registrados.")
+
+        elif opcion_reporte == 5: #Listar campers con bajo rendimiento
+            campers_bajo_rendimiento = [c for c in campers if c.get("rendimeinto") and c["rendimiento"] <0.6]
+            if campers_bajo_rendimiento:
+                print("Campers con bajo rendimiento:")
+                for c in campers_bajo_rendimiento:
+                    print(f"{c['nombres']} {c['apellidos']}")
+            else:
+                print("No hay campers con bajo rendimiento.")
+        
+        elif opcion_reporte == 6: #listar campers y trainers por ruta
+            for ruta in rutas:
+                campers_en_ruta = [c for c in campers if c.get("ruta_asignada") == ruta["nombre"]]
+                trainers_en_ruta = [t for t in trainers if ruta["nombre"] in t["rutas_asignadas"]]
+                print(f"Ruta: {ruta['nombre'].upper()}")
+                if campers_en_ruta:
+                    print("Campers en esta ruta:")
+                    for c in campers_en_ruta:
+                        print(f"{c['nombres']} {c['apellidos']}")
+                else:
+                    print("No hay campers en esta ruta.")
+                if trainers_en_ruta: 
+                    print("trainers asignados a esta ruta:")
+                    for t in trainers_en_ruta:
+                        print(f"{t['nombres']} {t['apellidos']}")
+                else:
+                    print("No hay trainers asignados a esta ruta.")
+                print()
+
+        elif opcion_reporte == 7: #mostrar estadisticas de modulos
+            for ruta in rutas:
+                print(f"Ruta: {['nombre'].upper()}")
+                for modulo in ruta["modulos"]:
+                    campers_aprobados=[c for c in campers if c.get(modulo["nombre"], {}).get("estado_final") == "aprobado"]
+                    campers_reprobados=[c for c in campers if c.get(modulo["nombre"], {}).get("estado_final") == "reprobado"]
+                    print(f"Modúlo: {modulo['nombres']}")
+                    print(f"Campers aprobados: {len(campers_aprobados)}")
+                    print(f"Campers reprobados: {len(campers_reprobados)}")
+                print()
+
+        else:
+            print("Opcion invalida")
+
+    elif opcion == 9:
+        break
+            
+
+
+    
+
                     
         
     
@@ -180,4 +347,5 @@ while True:
 #1 28-04-2024       10:00 pm    (por Jaime Barrera)
 #2 30-04-2024       12:45 pm    (por Jaime Barrera)
 #3 01-05-2024                   (por luis bautista)
+#4 02-05-2024       12.45 pm    (por Jaime Barrera)
 #COSAS POR ARREGLAR #1 Como quitar las comas al final de leer. SOLUCIONADO

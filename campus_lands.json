@@ -2,66 +2,29 @@
     "campers": [
         {
             "# de Identificacion": 1093925253,
-            "nombres": "jaime",
-            "apellidos": "barrera",
-            "direccion": "tibu",
-            "acudiente": "no tiene",
-            "telefono": 3123702377,
+            "nombres": "Jaime",
+            "apellidos": "Barrera",
+            "direccion": "Tibu",
+            "acudiente": "Rosalba",
+            "Fijo": 10,
+            "Telefono": 3123702377,
             "estado": "ingreso",
             "riesgo": "bajo"
-        },
-        {
-            "# de Identificacion": 1234,
-            "nombres": "Jhonatan",
-            "apellidos": "oma\u00f1a",
-            "direccion": "cucuta",
-            "acudiente": "no tiene",
-            "telefono": 31452,
-            "estado": "ingreso",
-            "riesgo": "bajo"
-        },
-        {
-            "# de Identificacion": 12121212,
-            "nombres": "aaaaaaa",
-            "apellidos": "aaaaaaaa",
-            "direccion": "bbbb",
-            "acudiente": "aaaaa",
-            "Fijo": 123,
-            "Telefono": 321,
-            "estado": "ingreso",
-            "riesgo": "bajo"
-            
         }
     ],
     "trainers": [
         {
-            "# de Identificacion": 1212,
-            "nombres": "Stiven",
-            "apellidos": "Carvajal",
-            "rutas_asignadas": []
-        },
-        {
-            "# de Identificacion": 3214,
-            "nombres": "Stiven",
-            "apellidos": "gomes",
+            "# de Identificacion": 222,
+            "nombres": "Pedro",
+            "apellidos": "Gomez",
             "rutas_asignadas": []
         }
     ],
     "coordinador": [
         {
-            "# de Identificacion": 1010,
-            "nombres": "Pedro",
-            "apellidos": "pedro"
-        },
-        {
-            "# de Identificacion": 101010,
-            "nombres": "jaime",
-            "apellidos": "oma\u00f1a"
-        },
-        {
-            "# de Identificacion": 456,
-            "nombres": "bbbb",
-            "apellidos": "bbbb"
+            "# de Identificacion": 1213,
+            "nombres": "Stiven",
+            "apellidos": "Carvajal"
         }
     ],
     "rutas": [
@@ -69,24 +32,84 @@
             "nombre": "java",
             "modulos": [
                 {
-                    "nombre": "Fundamentos de programacion",
-                    "contenido": "Python"
+                    "nombre": "Fundamentos de Programacion",
+                    "contenido": "Introduccio\u0301n a la algoritmia, PSeInt y Python"
+                }
+            ]
+        },
+        {
+            "nombre": "java",
+            "modulos": [
+                {
+                    "nombre": "Fundamentos de Programacion",
+                    "contenido": "Introduccio\u0301n a la algoritmia, PSeInt y Python"
                 },
                 {
-                    "nombre": "Programacioon Web",
-                    "contenido": "HTML"
+                    "nombre": "Programacion Web",
+                    "contenido": "HTML, CSS y Bootstrap"
+                }
+            ]
+        },
+        {
+            "nombre": "java",
+            "modulos": [
+                {
+                    "nombre": "Fundamentos de Programacion",
+                    "contenido": "Introduccio\u0301n a la algoritmia, PSeInt y Python"
                 },
                 {
-                    "nombre": "Programacioon formal",
-                    "contenido": "JavaScript"
+                    "nombre": "Programacion Web",
+                    "contenido": "HTML, CSS y Bootstrap"
                 },
                 {
-                    "nombre": "Bases de datos",
-                    "contenido": "Mysql"
+                    "nombre": "Programacion formal",
+                    "contenido": "Java"
+                }
+            ]
+        },
+        {
+            "nombre": "java",
+            "modulos": [
+                {
+                    "nombre": "Fundamentos de Programacion",
+                    "contenido": "Introduccio\u0301n a la algoritmia, PSeInt y Python"
+                },
+                {
+                    "nombre": "Programacion Web",
+                    "contenido": "HTML, CSS y Bootstrap"
+                },
+                {
+                    "nombre": "Programacion formal",
+                    "contenido": "Java"
+                },
+                {
+                    "nombre": "Base de datos",
+                    "contenido": "MongoDb"
+                }
+            ]
+        },
+        {
+            "nombre": "java",
+            "modulos": [
+                {
+                    "nombre": "Fundamentos de Programacion",
+                    "contenido": "Introduccio\u0301n a la algoritmia, PSeInt y Python"
+                },
+                {
+                    "nombre": "Programacion Web",
+                    "contenido": "HTML, CSS y Bootstrap"
+                },
+                {
+                    "nombre": "Programacion formal",
+                    "contenido": "Java"
+                },
+                {
+                    "nombre": "Base de datos",
+                    "contenido": "MongoDb"
                 },
                 {
                     "nombre": "Backend",
-                    "contenido": "Espress"
+                    "contenido": "NetCore"
                 }
             ]
         }
@@ -94,16 +117,19 @@
     "areas": [
         {
             "nombre": "Area 1",
+            "capacidad_maxima": 33,
             "ruta": null,
             "campers": []
         },
         {
             "nombre": "Area 2",
+            "capacidad_maxima": 33,
             "ruta": null,
             "campers": []
         },
         {
             "nombre": "Area 2",
+            "capacidad_maxima": 33,
             "ruta": null,
             "campers": []
         }
