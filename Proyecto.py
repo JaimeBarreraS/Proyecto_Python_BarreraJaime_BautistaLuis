@@ -14,9 +14,9 @@ def load_data():
             "coordinador": [],
             "rutas": [],
             "areas": [
-                {"nombre":"Area 1", "capacidad_maxima":33, "ruta":None, "campers":[]}, 
-                {"nombre":"Area 2", "capacidad_maxima":33, "ruta":None, "campers":[]},
-                {"nombre":"Area 2", "capacidad_maxima":33, "ruta":None, "campers":[]}
+                {"nombre":"Area 1", "capacidad_maxima":33, "ruta":None, "campers":[], "horarios": ["8:00 am - 12:00 pm"]},  
+                {"nombre":"Area 2", "capacidad_maxima":33, "ruta":None, "campers":[], "horarios": ["1:00 pm - 5:00 pm"]},
+                {"nombre":"Area 2", "capacidad_maxima":33, "ruta":None, "campers":[], "horarios": ["6:00 pm - 10:00 pm"]}
             ],
             "matriculas": [],
             
@@ -56,7 +56,7 @@ while True:
             "direccion" : input("Ingrese la dirección del camper: "),
             "acudiente" : input("Ingrese nombre del acudiente del camper: "),
             "Fijo" : int(input("Ingrese el numero de fijo del camper: ")),
-            "Telefono" : int(input("Ingrese el numero de telefono del camper:")),
+            "Telefono" : int(input("Ingrese el numero de telefono del camper: ")),
             "estado" : input("Ingrese el estado del camper: (ingreso): "),
             "riesgo" : input("ingrese el riesgo del camper: (bajo): "), 
         }
@@ -69,10 +69,10 @@ while True:
 
     elif opcion == 2: #registrar un nuevo trainer
         trainer={
-           "# de Identificacion" : int(input("Ingrese el numero de CC del Trainer: ")),
-           "nombres" : input("Ingrese el nombre del Trainer: "),
-           "apellidos" : input("Ingrese el apellido del Trainer: "),
-           "rutas_asignadas":[]
+            "# de Identificacion" : int(input("Ingrese el numero de CC del Trainer: ")),
+            "nombres" : input("Ingrese el nombre del Trainer: "),
+            "apellidos" : input("Ingrese el apellido del Trainer: "),
+            "rutas_asignadas":[]
         }
         data = load_data()
         data["trainers"].append(trainer)
@@ -83,12 +83,12 @@ while True:
     
     elif opcion == 3: #registrar un nuevo coordinador
         coordinador={
-           "# de Identificacion" : int(input("Ingrese el numero de CC del Coordinador: ")),
-           "nombres" : input("Ingrese el nombre del Coordinador: "),
-           "apellidos" : input("Ingrese el apellido del Coordinador: "),
+            "# de Identificacion" : int(input("Ingrese el numero de CC del Coordinador: ")),
+            "nombres" : input("Ingrese el nombre del Coordinador: "),
+            "apellidos" : input("Ingrese el apellido del Coordinador: "),
         }
         data = load_data()
-        data["coordinador"].append(coordinador)
+        data["coordinador"] = coordinador  #asigno diccionario al coordinador
         save_data(data)
         print("")
         print("Coordinador creado!!")
@@ -146,8 +146,8 @@ while True:
             
             for camper in campers:
                 if camper['estado'] == "ingreso":
-                    nota_teorica=float(input(f"Ingrese la nota teorica del camper{camper['nombres']} {camper['apellidos']}: "))
-                    nota_practica=float(input(f"Ingrese la nota practica del camper{camper['nombres']} {camper['apellidos']}: "))
+                    nota_teorica=float(input(f"Ingrese la nota teorica del camper {camper['nombres']} {camper['apellidos']}: "))
+                    nota_practica=float(input(f"Ingrese la nota practica del camper {camper['nombres']} {camper['apellidos']}: "))
                     promedio = (nota_teorica * 0.3) + (nota_practica* 0.6) 
                     if promedio >= 0.6:
                         camper["estado"] = "aprobado"
@@ -160,8 +160,8 @@ while True:
             print("")
             
     elif opcion == 6: #Asignar campers y trainers a rutas de entrenamiento
-        data=load_data
-        camper=[c for c in data["campers"] if c["estado"] == "aprobado"]
+        data=load_data()
+        campers=[c for c in data["campers"] if c["estado"] == "aprobado"]
         rutas=data["rutas"]
         areas=data["areas"]
         trainers=data["trainers"]
@@ -175,11 +175,12 @@ while True:
 
             area_disponible=None
             for area in areas:
-                if area["ruta"] == ruta_seleccionada["nombre"] and len(area["campers"]) <33:
+                if area["ruta"] is None or (area["ruta"] == ruta_seleccionada["nombre"] and len(area["campers"]) < area["capacidad_maxima"]):
                     area_disponible = area
                     break
 
             if area_disponible:
+                area_disponible["ruta"]=ruta_seleccionada["nombre"]
                 camper["ruta_asignada"]=ruta_seleccionada["nombre"]
                 area_disponible["campers"].append(camper)
                 print(f"El camper {camper['nombres']} {camper['apellidos']} ha sido asignado a la ruta {ruta_seleccionada['nombre']} en el area {area_disponible['nombre']}.")
@@ -221,9 +222,12 @@ while True:
 
         if opcion_reporte == 1: #evaluar campers
             for ruta in rutas:
+                print("")
                 print(f"Ruta: {ruta['nombre'].upper()}")
                 for modulo in ruta["modulos"]:
+                    print("")
                     print(f"Evaluando modulo {modulo['nombre']}")
+                    print("-------------------------------------------")
                     for camper in campers:
                         if"ruta_asignada" in camper and camper["ruta_asignada"] == ruta["nombre"]:
                             nota_teorica=float(input(f"Ingrese la nota teorica del camper {camper['nombres']} {camper['apellidos']} para el modulo {modulo['nombre']}: "))
@@ -316,11 +320,11 @@ while True:
 
         elif opcion_reporte == 7: #mostrar estadisticas de modulos
             for ruta in rutas:
-                print(f"Ruta: {['nombre'].upper()}")
+                print(f"Ruta: {ruta['nombre'].upper()}")
                 for modulo in ruta["modulos"]:
                     campers_aprobados=[c for c in campers if c.get(modulo["nombre"], {}).get("estado_final") == "aprobado"]
                     campers_reprobados=[c for c in campers if c.get(modulo["nombre"], {}).get("estado_final") == "reprobado"]
-                    print(f"Modúlo: {modulo['nombres']}")
+                    print(f"Modúlo: {modulo['nombre']}")
                     print(f"Campers aprobados: {len(campers_aprobados)}")
                     print(f"Campers reprobados: {len(campers_reprobados)}")
                 print()
@@ -390,24 +394,22 @@ while True:
 
     elif opcion == 9:
         break
-            
 
 
-    
-
-                    
-        
-    
-            
 #hecho por jaime barrera cc 1093925253 
 #hecho por luis bautista cc 1091356439
 
 
 #fechas de subidas (NO BORRAR)
+
 #1 28-04-2024       10:00 pm    (por Jaime Barrera)
 #2 30-04-2024       12:45 pm    (por Jaime Barrera)
 #3 01-05-2024                   (por luis bautista)
 #4 02-05-2024       12:45 pm    (por Jaime Barrera)
 #5 02-05-2024       10:00 pm    (por Jaime Barrera)
+#6 03-05-2024       11:20 am    (por Jaime Barrera)
 
-#COSAS POR ARREGLAR #1 Como quitar las comas al final de leer. SOLUCIONADO
+#COSAS POR ARREGLAR
+
+#1 documentar
+#2 dar espacion con print("") para que se vea estetico

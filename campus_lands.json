@@ -4,29 +4,99 @@
             "# de Identificacion": 1093925253,
             "nombres": "Jaime",
             "apellidos": "Barrera",
-            "direccion": "Tibu",
+            "direccion": "Tibu, Barrio La Esperezan #13-35",
             "acudiente": "Rosalba",
-            "Fijo": 10,
+            "Fijo": 1234,
             "Telefono": 3123702377,
-            "estado": "ingreso",
-            "riesgo": "bajo"
+            "estado": "aprobado",
+            "riesgo": "bajo",
+            "nota_final": 3.84,
+            "ruta_asignada": "java",
+            "Fundamentos de Programacion": {
+                "nota_teorica": 4.5,
+                "nota_practica": 4.2,
+                "promedio_pruebas": 3.87,
+                "estado_pruebas": "aprobado",
+                "quizes_trabajos": [
+                    4.2
+                ],
+                "promedio_quizes_trabajos": 4.2,
+                "nota_final": 3.903,
+                "estado_final": "aprobado"
+            },
+            "Programacion Web": {
+                "nota_teorica": 4.2,
+                "nota_practica": 3.2,
+                "promedio_pruebas": 3.1799999999999997,
+                "estado_pruebas": "aprobado",
+                "quizes_trabajos": [
+                    3.0
+                ],
+                "promedio_quizes_trabajos": 3.0,
+                "nota_final": 3.162,
+                "estado_final": "aprobado"
+            },
+            "Programacion formal": {
+                "nota_teorica": 4.1,
+                "nota_practica": 3.0,
+                "promedio_pruebas": 3.0299999999999994,
+                "estado_pruebas": "aprobado",
+                "quizes_trabajos": [
+                    5.0
+                ],
+                "promedio_quizes_trabajos": 5.0,
+                "nota_final": 3.2269999999999994,
+                "estado_final": "aprobado"
+            },
+            "Base de datos": {
+                "nota_teorica": 4.3,
+                "nota_practica": 4.2,
+                "promedio_pruebas": 3.8099999999999996,
+                "estado_pruebas": "aprobado",
+                "quizes_trabajos": [
+                    3.5
+                ],
+                "promedio_quizes_trabajos": 3.5,
+                "nota_final": 3.779,
+                "estado_final": "aprobado"
+            },
+            "Backend": {
+                "nota_teorica": 4.2,
+                "nota_practica": 3.8,
+                "promedio_pruebas": 3.54,
+                "estado_pruebas": "aprobado",
+                "quizes_trabajos": [
+                    2.9
+                ],
+                "promedio_quizes_trabajos": 2.9,
+                "nota_final": 3.476,
+                "estado_final": "aprobado"
+            }
         }
     ],
     "trainers": [
         {
-            "# de Identificacion": 222,
-            "nombres": "Pedro",
-            "apellidos": "Gomez",
-            "rutas_asignadas": []
-        }
-    ],
-    "coordinador": [
+            "# de Identificacion": 12345,
+            "nombres": "pedro",
+            "apellidos": "gomez",
+            "rutas_asignadas": [
+                "java"
+            ]
+        },
         {
-            "# de Identificacion": 1213,
-            "nombres": "Stiven",
-            "apellidos": "Carvajal"
+            "# de Identificacion": 7894,
+            "nombres": "Wilmer ",
+            "apellidos": "Rojas",
+            "rutas_asignadas": [
+                "java"
+            ]
         }
     ],
+    "coordinador": {
+        "# de Identificacion": 1254,
+        "nombres": "Stiven",
+        "apellidos": "Carvajal"
+    },
     "rutas": [
         {
             "nombre": "java",
@@ -34,45 +104,6 @@
                 {
                     "nombre": "Fundamentos de Programacion",
                     "contenido": "Introduccio\u0301n a la algoritmia, PSeInt y Python"
-                }
-            ]
-        },
-        {
-            "nombre": "java",
-            "modulos": [
-                {
-                    "nombre": "Fundamentos de Programacion",
-                    "contenido": "Introduccio\u0301n a la algoritmia, PSeInt y Python"
-                },
-                {
-                    "nombre": "Programacion Web",
-                    "contenido": "HTML, CSS y Bootstrap"
-                }
-            ]
-        },
-        {
-            "nombre": "java",
-            "modulos": [
-                {
-                    "nombre": "Fundamentos de Programacion",
-                    "contenido": "Introduccio\u0301n a la algoritmia, PSeInt y Python"
-                },
-                {
-                    "nombre": "Programacion Web",
-                    "contenido": "HTML, CSS y Bootstrap"
-                },
-                {
-                    "nombre": "Programacion formal",
-                    "contenido": "Java"
-                }
-            ]
-        },
-        {
-            "nombre": "java",
-            "modulos": [
-                {
-                    "nombre": "Fundamentos de Programacion",
-                    "contenido": "Introduccio\u0301n a la algoritmia, PSeInt y Python"
                 },
                 {
                     "nombre": "Programacion Web",
@@ -84,32 +115,11 @@
                 },
                 {
                     "nombre": "Base de datos",
-                    "contenido": "MongoDb"
-                }
-            ]
-        },
-        {
-            "nombre": "java",
-            "modulos": [
-                {
-                    "nombre": "Fundamentos de Programacion",
-                    "contenido": "Introduccio\u0301n a la algoritmia, PSeInt y Python"
-                },
-                {
-                    "nombre": "Programacion Web",
-                    "contenido": "HTML, CSS y Bootstrap"
-                },
-                {
-                    "nombre": "Programacion formal",
-                    "contenido": "Java"
-                },
-                {
-                    "nombre": "Base de datos",
-                    "contenido": "MongoDb"
+                    "contenido": "Mysql, MongoDb"
                 },
                 {
                     "nombre": "Backend",
-                    "contenido": "NetCore"
+                    "contenido": "Spring Boot"
                 }
             ]
         }
@@ -118,21 +128,206 @@
         {
             "nombre": "Area 1",
             "capacidad_maxima": 33,
-            "ruta": null,
-            "campers": []
+            "ruta": "java",
+            "campers": [
+                {
+                    "# de Identificacion": 1093925253,
+                    "nombres": "Jaime",
+                    "apellidos": "Barrera",
+                    "direccion": "Tibu, Barrio La Esperezan #13-35",
+                    "acudiente": "Rosalba",
+                    "Fijo": 1234,
+                    "Telefono": 3123702377,
+                    "estado": "aprobado",
+                    "riesgo": "bajo",
+                    "nota_final": 3.84,
+                    "ruta_asignada": "java"
+                },
+                {
+                    "# de Identificacion": 1093925253,
+                    "nombres": "Jaime",
+                    "apellidos": "Barrera",
+                    "direccion": "Tibu, Barrio La Esperezan #13-35",
+                    "acudiente": "Rosalba",
+                    "Fijo": 1234,
+                    "Telefono": 3123702377,
+                    "estado": "aprobado",
+                    "riesgo": "bajo",
+                    "nota_final": 3.84,
+                    "ruta_asignada": "java",
+                    "Fundamentos de Programacion": {
+                        "nota_teorica": 4.5,
+                        "nota_practica": 4.2,
+                        "promedio_pruebas": 3.87,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            4.2
+                        ],
+                        "promedio_quizes_trabajos": 4.2,
+                        "nota_final": 3.903,
+                        "estado_final": "aprobado"
+                    },
+                    "Programacion Web": {
+                        "nota_teorica": 4.2,
+                        "nota_practica": 3.2,
+                        "promedio_pruebas": 3.1799999999999997,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            3.0
+                        ],
+                        "promedio_quizes_trabajos": 3.0,
+                        "nota_final": 3.162,
+                        "estado_final": "aprobado"
+                    },
+                    "Programacion formal": {
+                        "nota_teorica": 4.1,
+                        "nota_practica": 3.0,
+                        "promedio_pruebas": 3.0299999999999994,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            5.0
+                        ],
+                        "promedio_quizes_trabajos": 5.0,
+                        "nota_final": 3.2269999999999994,
+                        "estado_final": "aprobado"
+                    },
+                    "Base de datos": {
+                        "nota_teorica": 4.3,
+                        "nota_practica": 4.2,
+                        "promedio_pruebas": 3.8099999999999996,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            3.5
+                        ],
+                        "promedio_quizes_trabajos": 3.5,
+                        "nota_final": 3.779,
+                        "estado_final": "aprobado"
+                    },
+                    "Backend": {
+                        "nota_teorica": 4.2,
+                        "nota_practica": 3.8,
+                        "promedio_pruebas": 3.54,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            2.9
+                        ],
+                        "promedio_quizes_trabajos": 2.9,
+                        "nota_final": 3.476,
+                        "estado_final": "aprobado"
+                    }
+                }
+            ],
+            "horarios": [
+                "8:00 am - 12:00 pm"
+            ]
         },
         {
             "nombre": "Area 2",
             "capacidad_maxima": 33,
             "ruta": null,
-            "campers": []
+            "campers": [],
+            "horarios": [
+                "1:00 pm - 5:00 pm"
+            ]
         },
         {
             "nombre": "Area 2",
             "capacidad_maxima": 33,
             "ruta": null,
-            "campers": []
+            "campers": [],
+            "horarios": [
+                "6:00 pm - 10:00 pm"
+            ]
         }
     ],
-    "matriculas": []
+    "matriculas": [
+        {
+            "camper": {
+                "# de Identificacion": 1093925253,
+                "nombres": "Jaime",
+                "apellidos": "Barrera",
+                "direccion": "Tibu, Barrio La Esperezan #13-35",
+                "acudiente": "Rosalba",
+                "Fijo": 1234,
+                "Telefono": 3123702377,
+                "estado": "aprobado",
+                "riesgo": "bajo",
+                "nota_final": 3.84,
+                "ruta_asignada": "java",
+                "Fundamentos de Programacion": {
+                    "nota_teorica": 4.5,
+                    "nota_practica": 4.2,
+                    "promedio_pruebas": 3.87,
+                    "estado_pruebas": "aprobado",
+                    "quizes_trabajos": [
+                        4.2
+                    ],
+                    "promedio_quizes_trabajos": 4.2,
+                    "nota_final": 3.903,
+                    "estado_final": "aprobado"
+                },
+                "Programacion Web": {
+                    "nota_teorica": 4.2,
+                    "nota_practica": 3.2,
+                    "promedio_pruebas": 3.1799999999999997,
+                    "estado_pruebas": "aprobado",
+                    "quizes_trabajos": [
+                        3.0
+                    ],
+                    "promedio_quizes_trabajos": 3.0,
+                    "nota_final": 3.162,
+                    "estado_final": "aprobado"
+                },
+                "Programacion formal": {
+                    "nota_teorica": 4.1,
+                    "nota_practica": 3.0,
+                    "promedio_pruebas": 3.0299999999999994,
+                    "estado_pruebas": "aprobado",
+                    "quizes_trabajos": [
+                        5.0
+                    ],
+                    "promedio_quizes_trabajos": 5.0,
+                    "nota_final": 3.2269999999999994,
+                    "estado_final": "aprobado"
+                },
+                "Base de datos": {
+                    "nota_teorica": 4.3,
+                    "nota_practica": 4.2,
+                    "promedio_pruebas": 3.8099999999999996,
+                    "estado_pruebas": "aprobado",
+                    "quizes_trabajos": [
+                        3.5
+                    ],
+                    "promedio_quizes_trabajos": 3.5,
+                    "nota_final": 3.779,
+                    "estado_final": "aprobado"
+                },
+                "Backend": {
+                    "nota_teorica": 4.2,
+                    "nota_practica": 3.8,
+                    "promedio_pruebas": 3.54,
+                    "estado_pruebas": "aprobado",
+                    "quizes_trabajos": [
+                        2.9
+                    ],
+                    "promedio_quizes_trabajos": 2.9,
+                    "nota_final": 3.476,
+                    "estado_final": "aprobado"
+                }
+            },
+            "ruta": "java",
+            "trainer": {
+                "# de Identificacion": 7894,
+                "nombres": "Wilmer ",
+                "apellidos": "Rojas",
+                "rutas_asignadas": [
+                    "java"
+                ]
+            },
+            "area": "Area 1",
+            "fecha_inicio": "01/03/2024",
+            "fecha_fin": "19/09/2024",
+            "salon": "Area 2"
+        }
+    ]
 }
