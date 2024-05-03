@@ -16,7 +16,7 @@ def load_data():
             "areas": [
                 {"nombre":"Area 1", "capacidad_maxima":33, "ruta":None, "campers":[], "horarios": ["8:00 am - 12:00 pm"]},  
                 {"nombre":"Area 2", "capacidad_maxima":33, "ruta":None, "campers":[], "horarios": ["1:00 pm - 5:00 pm"]},
-                {"nombre":"Area 2", "capacidad_maxima":33, "ruta":None, "campers":[], "horarios": ["6:00 pm - 10:00 pm"]}
+                {"nombre":"Area 3", "capacidad_maxima":33, "ruta":None, "campers":[], "horarios": ["6:00 pm - 10:00 pm"]}
             ],
             "matriculas": [],
             
@@ -32,6 +32,7 @@ def save_data(data):
     
 #menu principal
 while True:
+    print("")
     print("----Gestion Academica CampusLands----")
     print("")
     print("1. Registrar Camper")
@@ -46,7 +47,7 @@ while True:
     print("")
 
     opcion = int(input("Eliga un numero del 1 al 9: "))
-    print("")
+    print("-------------------------------")
 
     if opcion == 1: #crear camper
         camper = {
@@ -96,6 +97,7 @@ while True:
     
     elif opcion == 4: #crear nueva ruta de entrenamiento
         ruta_nombre=input("Ingrese el nombre de la ruta (NodeJS, Java, NetCore): ")
+        print("")
         if ruta_nombre.lower() in ["nodejs","java","netcore"]:
             ruta={
                 "nombre": ruta_nombre.lower(),
@@ -108,8 +110,7 @@ while True:
                 "Base de datos",
                 "Backend",
             ]
-            print("""- Fundamentos de programación (Introducción a la algoritmia, PSeInt y Python)
-- Programación Web (HTML, CSS y Bootstrap).
+            print("""
 - Programación formal (Java, JavaScript, C#).
 - Bases de datos (Mysql, MongoDb y Postgresql).
 - Backend (NetCore, Spring Boot, NodeJS y Express).
@@ -118,11 +119,13 @@ while True:
                 if isinstance(modulo, dict):
                     ruta["modulos"].append(modulo)
                 else: 
+                    print("---------------------------------------------------------")
                     print(f"Configurando módulo: {modulo}")
                     detalle_modulo={
                         "nombre": modulo,
                         "contenido":input(f"ingrese el contenido del módulo '{modulo}': ")
                     }
+                    print("")
                     ruta["modulos"].append(detalle_modulo)
 
             data=load_data()
@@ -143,10 +146,12 @@ while True:
             print("No hay coordinador registrado.")
         else:
             print(f"Binvenido, coordinador {coordinador['nombres']} {coordinador['apellidos']}")
+            print("==============================================================================")
             
             for camper in campers:
                 if camper['estado'] == "ingreso":
                     nota_teorica=float(input(f"Ingrese la nota teorica del camper {camper['nombres']} {camper['apellidos']}: "))
+                    print("-------------------------------------------------------------------------------")
                     nota_practica=float(input(f"Ingrese la nota practica del camper {camper['nombres']} {camper['apellidos']}: "))
                     promedio = (nota_teorica * 0.3) + (nota_practica* 0.6) 
                     if promedio >= 0.6:
@@ -168,8 +173,11 @@ while True:
 
         for camper in campers:
             print(f"Asignando ruta para el camper {camper['nombres']} {camper['apellidos']}")
+            print("")
             for i, ruta in enumerate(rutas):
                 print(f"{i+1}. {ruta['nombre']}")
+
+            print("")
             opcion_ruta=int(input("Seleccione una ruta: "))
             ruta_seleccionada=rutas[opcion_ruta-1]
 
@@ -183,6 +191,7 @@ while True:
                 area_disponible["ruta"]=ruta_seleccionada["nombre"]
                 camper["ruta_asignada"]=ruta_seleccionada["nombre"]
                 area_disponible["campers"].append(camper)
+                print("---------------------------------------------------------------------------------")
                 print(f"El camper {camper['nombres']} {camper['apellidos']} ha sido asignado a la ruta {ruta_seleccionada['nombre']} en el area {area_disponible['nombre']}.")
 
                 trainer_disponible=None
@@ -193,6 +202,7 @@ while True:
                         break
 
                 if trainer_disponible:
+                    print("---------------------------------------------------------------------------------")
                     print(f"El trainer {trainer_disponible['nombres']} {trainer_disponible['apellidos']} ha sido asignado a la ruta {ruta_seleccionada['nombre']}.")
                 else:
                     print(f"No hay trainers disponibles para asignar a la ruta {ruta_seleccionada['nombre']}.")
@@ -219,19 +229,21 @@ while True:
         print("")
         
         opcion_reporte=int(input("Eliga un numero del 1 al 7: "))
+        print("")
 
         if opcion_reporte == 1: #evaluar campers
             for ruta in rutas:
-                print("")
                 print(f"Ruta: {ruta['nombre'].upper()}")
                 for modulo in ruta["modulos"]:
                     print("")
                     print(f"Evaluando modulo {modulo['nombre']}")
-                    print("-------------------------------------------")
+                    print("====================================================")
                     for camper in campers:
                         if"ruta_asignada" in camper and camper["ruta_asignada"] == ruta["nombre"]:
                             nota_teorica=float(input(f"Ingrese la nota teorica del camper {camper['nombres']} {camper['apellidos']} para el modulo {modulo['nombre']}: "))
+                            print("-------------------------------------------------------------------------------------------")
                             nota_practica=float(input(f"Ingrese la nota practica del camper {camper['nombres']} {camper['apellidos']} para el modulo {modulo['nombre']}: "))
+                            print("-------------------------------------------------------------------------------------------")
                             promedio_pruebas=(nota_teorica * 0.3) + (nota_practica * 0.6)
                             if promedio_pruebas >= 0.6:
                                 estado_pruebas="aprobado"
@@ -241,6 +253,7 @@ while True:
                             quizes_trabajos = []
                             num_quizes_trabajos = int(input(f"Ingrese el numero de quices y trabajos del camper {camper['nombres']} {camper['apellidos']} para el modulo {modulo['nombre']}: "))
                             for i in range(num_quizes_trabajos):
+                                print("-------------------------------------------------------------------------------------------")
                                 nota_quiz_trabajo = float(input(f"Ingrese la nota del quiz/trabajo {i+1}: "))
                                 quizes_trabajos.append(nota_quiz_trabajo)
                             promedio_quizes_trabajos = sum(quizes_trabajos) / num_quizes_trabajos
@@ -262,31 +275,36 @@ while True:
                                 "estado_final": estado_final
                             }
             save_data(data)
+            print("")
             print("Evaluacion de campers completada.")
 
         elif opcion_reporte == 2: #listar campers inscritos
             campers_inscritos = [c for c in campers if c["estado"] == "inscrito"]
             if campers_inscritos:
                 print("Campers inscritos:")
+                print("---------------------")
                 for c in campers_inscritos:
-                    print(f"{c['nombres']} {c['apellidos']}")
+                    print(f"* {c['nombres']} {c['apellidos']}")
                 else:
                     print("No hay campers inscritos")
 
         elif opcion_reporte == 3: #listar campers aprobados
+            print("")
             campers_aprobados = [c for c in campers if c["estado"] == "aprobado"]
             if campers_aprobados:
                 print("Campers aprobados:")
+                print("---------------------")
                 for c in campers_aprobados:
-                    print(f"{c['nombres']} {c['apellidos']}")
+                    print(f"* {c['nombres']} {c['apellidos']}")
                 else:
                     print("No hay campers aprobados.")
 
         elif opcion_reporte == 4: #listar trainers 
             if trainers:
                 print("Trainers de CampusLands:")
+                print("---------------------")
                 for t in trainers:
-                    print(f"{t['nombres']} {t['apellidos']}")
+                    print(f"* {t['nombres']} {t['apellidos']}")
             else:
                 print("No hay trainers registrados.")
 
@@ -294,8 +312,9 @@ while True:
             campers_bajo_rendimiento = [c for c in campers if c.get("rendimeinto") and c["rendimiento"] <0.6]
             if campers_bajo_rendimiento:
                 print("Campers con bajo rendimiento:")
+                print("---------------------")
                 for c in campers_bajo_rendimiento:
-                    print(f"{c['nombres']} {c['apellidos']}")
+                    print(f"* {c['nombres']} {c['apellidos']}")
             else:
                 print("No hay campers con bajo rendimiento.")
         
@@ -304,16 +323,19 @@ while True:
                 campers_en_ruta = [c for c in campers if c.get("ruta_asignada") == ruta["nombre"]]
                 trainers_en_ruta = [t for t in trainers if ruta["nombre"] in t["rutas_asignadas"]]
                 print(f"Ruta: {ruta['nombre'].upper()}")
+                print("============")
                 if campers_en_ruta:
                     print("Campers en esta ruta:")
+                    print("----------------------")
                     for c in campers_en_ruta:
-                        print(f"{c['nombres']} {c['apellidos']}")
+                        print(f"* {c['nombres']} {c['apellidos']}")
                 else:
                     print("No hay campers en esta ruta.")
                 if trainers_en_ruta: 
                     print("trainers asignados a esta ruta:")
+                    print("----------------------")
                     for t in trainers_en_ruta:
-                        print(f"{t['nombres']} {t['apellidos']}")
+                        print(f"* {t['nombres']} {t['apellidos']}")
                 else:
                     print("No hay trainers asignados a esta ruta.")
                 print()
@@ -321,12 +343,15 @@ while True:
         elif opcion_reporte == 7: #mostrar estadisticas de modulos
             for ruta in rutas:
                 print(f"Ruta: {ruta['nombre'].upper()}")
+                print("=================")
                 for modulo in ruta["modulos"]:
                     campers_aprobados=[c for c in campers if c.get(modulo["nombre"], {}).get("estado_final") == "aprobado"]
                     campers_reprobados=[c for c in campers if c.get(modulo["nombre"], {}).get("estado_final") == "reprobado"]
                     print(f"Modúlo: {modulo['nombre']}")
+                    print("------------------------------------------")
                     print(f"Campers aprobados: {len(campers_aprobados)}")
                     print(f"Campers reprobados: {len(campers_reprobados)}")
+                    print("------------------------------------------")
                 print()
 
         else:
@@ -345,9 +370,12 @@ while True:
         else:
             for camper in campers:
                 print(f"Matriculando el camper {camper['nombres']} {camper['apellidos']}")
+                print("------------------------------------------")
                 for i, ruta in enumerate(rutas):
                     print(f"{i+1}. {ruta['nombre']}")
+                print("------------------------------------------")
                 opcion_ruta = int(input("Seleccione una ruta: "))
+                print("------------------------------------------")
                 ruta_seleccionada = rutas[opcion_ruta - 1]
 
                 trainer_disponible = None 
@@ -371,9 +399,10 @@ while True:
                     print(f"No hay areas disponibles para la ruta {ruta_seleccionada['nombre']}.")
                     continue
 
-                fecha_inicio = input("Ingrese la fecha de inicio de la matricula (dd/mm/yyyy): ")
-                fecha_fin = input("Ingrese la fecha de finalizacion de la matricula (dd/mm/yyyy): ")
+                fecha_inicio = input("Ingrese la fecha de inicio de la matricula (dd/mm/aaaa): ")
+                fecha_fin = input("Ingrese la fecha de finalizacion de la matricula (dd/mm/aaaa): ")
                 salon = input("Ingrese el salon de entrenamiento: ")
+                print("-----------------------------------------------------------")
 
                 matricula = {
                     "camper": camper,
@@ -395,7 +424,6 @@ while True:
     elif opcion == 9:
         break
 
-
 #hecho por jaime barrera cc 1093925253 
 #hecho por luis bautista cc 1091356439
 
@@ -408,6 +436,7 @@ while True:
 #4 02-05-2024       12:45 pm    (por Jaime Barrera)
 #5 02-05-2024       10:00 pm    (por Jaime Barrera)
 #6 03-05-2024       11:20 am    (por Jaime Barrera)
+#6 03-05-2024       1:00 pm    (por Jaime Barrera)
 
 #COSAS POR ARREGLAR
 
