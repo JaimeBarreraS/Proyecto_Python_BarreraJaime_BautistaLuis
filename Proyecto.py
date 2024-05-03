@@ -328,6 +328,66 @@ while True:
         else:
             print("Opcion invalida")
 
+    elif opcion == 8:# Gestionar matriculas 
+        data = load_data()
+        campers = [c for c in data["campers"] if c["estado"] == "aprobado"]
+        rutas = data["rutas"]
+        trainers = data["trainers"]
+        areas = data["areas"]
+        matriculas = data["matriculas"]
+
+        if not campers:
+            print("No hay campers aprobados para matricular.")
+        else:
+            for camper in campers:
+                print(f"Matriculando el camper {camper['nombres']} {camper['apellidos']}")
+                for i, ruta in enumerate(rutas):
+                    print(f"{i+1}. {ruta['nombre']}")
+                opcion_ruta = int(input("Seleccione una ruta: "))
+                ruta_seleccionada = rutas[opcion_ruta - 1]
+
+                trainer_disponible = None 
+                for trainer in trainers:
+                    if ruta_seleccionada["nombre"] not in trainer["rutas_asignadas"]:
+                        trainer_disponible = trainer
+                        trainer["rutas_asignadas"].append(ruta_seleccionada["nombre"])
+                        break
+
+                if not trainer_disponible:
+                    print(f"No hay trainers disponibles para la ruta {ruta_seleccionada['nombre']}.")
+                    continue
+
+                area_disponible = None
+                for area in areas:
+                    if area["ruta"] == ruta_seleccionada["nombre"] and len(area["campers"]) < area["capacidad_maxima"]:
+                        area_disponible = area
+                        break
+
+                if not area_disponible:
+                    print(f"No hay areas disponibles para la ruta {ruta_seleccionada['nombre']}.")
+                    continue
+
+                fecha_inicio = input("Ingrese la fecha de inicio de la matricula (dd/mm/yyyy): ")
+                fecha_fin = input("Ingrese la fecha de finalizacion de la matricula (dd/mm/yyyy): ")
+                salon = input("Ingrese el salon de entrenamiento: ")
+
+                matricula = {
+                    "camper": camper,
+                    "ruta": ruta_seleccionada["nombre"],
+                    "trainer": trainer_disponible,
+                    "area": area_disponible["nombre"],
+                    "fecha_inicio": fecha_inicio,
+                    "fecha_fin": fecha_fin,
+                    "salon": salon
+                }
+
+                matriculas.append(matricula)
+                area_disponible["campers"].append(camper)
+
+                print(f"Matricula registrada exitosamente para el camper {camper['nombres']} {camper['apellidos']}.")
+
+        save_data(data)
+
     elif opcion == 9:
         break
             
@@ -347,5 +407,7 @@ while True:
 #1 28-04-2024       10:00 pm    (por Jaime Barrera)
 #2 30-04-2024       12:45 pm    (por Jaime Barrera)
 #3 01-05-2024                   (por luis bautista)
-#4 02-05-2024       12.45 pm    (por Jaime Barrera)
+#4 02-05-2024       12:45 pm    (por Jaime Barrera)
+#5 02-05-2024       10:00 pm    (por Jaime Barrera)
+
 #COSAS POR ARREGLAR #1 Como quitar las comas al final de leer. SOLUCIONADO
