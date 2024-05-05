@@ -11,7 +11,7 @@
             "estado": "aprobado",
             "riesgo": "bajo",
             "nota_final": 3.84,
-            "ruta_asignada": "nodejs",
+            "ruta_asignada": "java",
             "Fundamentos de Programacion": {
                 "nota_teorica": 4.5,
                 "nota_practica": 2.9,
@@ -84,7 +84,7 @@
             "estado": "aprobado",
             "riesgo": "bajo",
             "nota_final": 3.87,
-            "ruta_asignada": "java",
+            "ruta_asignada": "nodejs",
             "Fundamentos de Programacion": {
                 "nota_teorica": 4.2,
                 "nota_practica": 3.8,
@@ -158,6 +158,19 @@
             "riesgo": "bajo",
             "nota_final": 3.75,
             "ruta_asignada": "java"
+        },
+        {
+            "# de Identificacion": 109392543,
+            "nombres": "Enrique",
+            "apellidos": "Sandoval",
+            "direccion": "no tiene",
+            "acudiente": "no tiene",
+            "Fijo": 153442,
+            "Telefono": 3141335,
+            "estado": "aprobado",
+            "riesgo": "bajo",
+            "nota_final": 3.5999999999999996,
+            "ruta_asignada": "nodejs"
         }
     ],
     "trainers": [
@@ -196,12 +209,21 @@
                 "nodejs",
                 "java"
             ]
+        },
+        {
+            "# de Identificacion": 615365134,
+            "nombres": "Carvajal",
+            "apellidos": "Stiven",
+            "rutas_asignadas": [
+                "java",
+                "nodejs"
+            ]
         }
     ],
     "coordinador": {
-        "# de Identificacion": 1254,
-        "nombres": "Stiven",
-        "apellidos": "Carvajal"
+        "# de Identificacion": 23124,
+        "nombres": "Pedro",
+        "apellidos": "Gomez"
     },
     "rutas": [
         {
@@ -272,6 +294,31 @@
                 {
                     "nombre": "Base de datos",
                     "contenido": "Mysql"
+                },
+                {
+                    "nombre": "Backend",
+                    "contenido": "NetCore"
+                }
+            ]
+        },
+        {
+            "nombre": "nodejs",
+            "modulos": [
+                {
+                    "nombre": "Fundamentos de Programacion",
+                    "contenido": "Introduccio\u0301n a la algoritmia, PSeInt y Python"
+                },
+                {
+                    "nombre": "Programacion Web",
+                    "contenido": "HTML, CSS y Bootstrap"
+                },
+                {
+                    "nombre": "Programacion formal",
+                    "contenido": "Java"
+                },
+                {
+                    "nombre": "Base de datos",
+                    "contenido": "Mysql, MongoDb"
                 },
                 {
                     "nombre": "Backend",
@@ -676,6 +723,264 @@
                     "riesgo": "bajo",
                     "nota_final": 3.75,
                     "ruta_asignada": "java"
+                },
+                {
+                    "# de Identificacion": 1093925253,
+                    "nombres": "Jaime",
+                    "apellidos": "Barrera",
+                    "direccion": "Tibu, Barrio La Esperezan #13-35",
+                    "acudiente": "Rosalba",
+                    "Fijo": 1234,
+                    "Telefono": 3123702377,
+                    "estado": "aprobado",
+                    "riesgo": "bajo",
+                    "nota_final": 3.84,
+                    "ruta_asignada": "java",
+                    "Fundamentos de Programacion": {
+                        "nota_teorica": 4.5,
+                        "nota_practica": 2.9,
+                        "promedio_pruebas": 3.09,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            2.9
+                        ],
+                        "promedio_quizes_trabajos": 2.9,
+                        "nota_final": 3.071,
+                        "estado_final": "aprobado"
+                    },
+                    "Programacion Web": {
+                        "nota_teorica": 4.8,
+                        "nota_practica": 3.0,
+                        "promedio_pruebas": 3.2399999999999998,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            3.0
+                        ],
+                        "promedio_quizes_trabajos": 3.0,
+                        "nota_final": 3.216,
+                        "estado_final": "aprobado"
+                    },
+                    "Programacion formal": {
+                        "nota_teorica": 4.8,
+                        "nota_practica": 3.0,
+                        "promedio_pruebas": 3.2399999999999998,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            3.2
+                        ],
+                        "promedio_quizes_trabajos": 3.2,
+                        "nota_final": 3.2359999999999998,
+                        "estado_final": "aprobado"
+                    },
+                    "Base de datos": {
+                        "nota_teorica": 4.2,
+                        "nota_practica": 4.9,
+                        "promedio_pruebas": 4.2,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            3.9
+                        ],
+                        "promedio_quizes_trabajos": 3.9,
+                        "nota_final": 4.17,
+                        "estado_final": "aprobado"
+                    },
+                    "Backend": {
+                        "nota_teorica": 4.0,
+                        "nota_practica": 3.1,
+                        "promedio_pruebas": 3.0599999999999996,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            4.3
+                        ],
+                        "promedio_quizes_trabajos": 4.3,
+                        "nota_final": 3.1839999999999997,
+                        "estado_final": "aprobado"
+                    }
+                },
+                {
+                    "# de Identificacion": 109392543,
+                    "nombres": "Enrique",
+                    "apellidos": "Sandoval",
+                    "direccion": "no tiene",
+                    "acudiente": "no tiene",
+                    "Fijo": 153442,
+                    "Telefono": 3141335,
+                    "estado": "aprobado",
+                    "riesgo": "bajo",
+                    "nota_final": 3.5999999999999996,
+                    "ruta_asignada": "java"
+                },
+                {
+                    "# de Identificacion": 1093925253,
+                    "nombres": "Jaime",
+                    "apellidos": "Barrera",
+                    "direccion": "Tibu, Barrio La Esperezan #13-35",
+                    "acudiente": "Rosalba",
+                    "Fijo": 1234,
+                    "Telefono": 3123702377,
+                    "estado": "aprobado",
+                    "riesgo": "bajo",
+                    "nota_final": 3.84,
+                    "ruta_asignada": "java",
+                    "Fundamentos de Programacion": {
+                        "nota_teorica": 4.5,
+                        "nota_practica": 2.9,
+                        "promedio_pruebas": 3.09,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            2.9
+                        ],
+                        "promedio_quizes_trabajos": 2.9,
+                        "nota_final": 3.071,
+                        "estado_final": "aprobado"
+                    },
+                    "Programacion Web": {
+                        "nota_teorica": 4.8,
+                        "nota_practica": 3.0,
+                        "promedio_pruebas": 3.2399999999999998,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            3.0
+                        ],
+                        "promedio_quizes_trabajos": 3.0,
+                        "nota_final": 3.216,
+                        "estado_final": "aprobado"
+                    },
+                    "Programacion formal": {
+                        "nota_teorica": 4.8,
+                        "nota_practica": 3.0,
+                        "promedio_pruebas": 3.2399999999999998,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            3.2
+                        ],
+                        "promedio_quizes_trabajos": 3.2,
+                        "nota_final": 3.2359999999999998,
+                        "estado_final": "aprobado"
+                    },
+                    "Base de datos": {
+                        "nota_teorica": 4.2,
+                        "nota_practica": 4.9,
+                        "promedio_pruebas": 4.2,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            3.9
+                        ],
+                        "promedio_quizes_trabajos": 3.9,
+                        "nota_final": 4.17,
+                        "estado_final": "aprobado"
+                    },
+                    "Backend": {
+                        "nota_teorica": 4.0,
+                        "nota_practica": 3.1,
+                        "promedio_pruebas": 3.0599999999999996,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            4.3
+                        ],
+                        "promedio_quizes_trabajos": 4.3,
+                        "nota_final": 3.1839999999999997,
+                        "estado_final": "aprobado"
+                    }
+                },
+                {
+                    "# de Identificacion": 55555,
+                    "nombres": "Freiler",
+                    "apellidos": "Ortega",
+                    "direccion": "Tibu",
+                    "acudiente": "No tiene",
+                    "Fijo": 12364,
+                    "Telefono": 1325469,
+                    "estado": "aprobado",
+                    "riesgo": "bajo",
+                    "nota_final": 3.75,
+                    "ruta_asignada": "java"
+                },
+                {
+                    "# de Identificacion": 1093925253,
+                    "nombres": "Jaime",
+                    "apellidos": "Barrera",
+                    "direccion": "Tibu, Barrio La Esperezan #13-35",
+                    "acudiente": "Rosalba",
+                    "Fijo": 1234,
+                    "Telefono": 3123702377,
+                    "estado": "aprobado",
+                    "riesgo": "bajo",
+                    "nota_final": 3.84,
+                    "ruta_asignada": "java",
+                    "Fundamentos de Programacion": {
+                        "nota_teorica": 4.5,
+                        "nota_practica": 2.9,
+                        "promedio_pruebas": 3.09,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            2.9
+                        ],
+                        "promedio_quizes_trabajos": 2.9,
+                        "nota_final": 3.071,
+                        "estado_final": "aprobado"
+                    },
+                    "Programacion Web": {
+                        "nota_teorica": 4.8,
+                        "nota_practica": 3.0,
+                        "promedio_pruebas": 3.2399999999999998,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            3.0
+                        ],
+                        "promedio_quizes_trabajos": 3.0,
+                        "nota_final": 3.216,
+                        "estado_final": "aprobado"
+                    },
+                    "Programacion formal": {
+                        "nota_teorica": 4.8,
+                        "nota_practica": 3.0,
+                        "promedio_pruebas": 3.2399999999999998,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            3.2
+                        ],
+                        "promedio_quizes_trabajos": 3.2,
+                        "nota_final": 3.2359999999999998,
+                        "estado_final": "aprobado"
+                    },
+                    "Base de datos": {
+                        "nota_teorica": 4.2,
+                        "nota_practica": 4.9,
+                        "promedio_pruebas": 4.2,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            3.9
+                        ],
+                        "promedio_quizes_trabajos": 3.9,
+                        "nota_final": 4.17,
+                        "estado_final": "aprobado"
+                    },
+                    "Backend": {
+                        "nota_teorica": 4.0,
+                        "nota_practica": 3.1,
+                        "promedio_pruebas": 3.0599999999999996,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            4.3
+                        ],
+                        "promedio_quizes_trabajos": 4.3,
+                        "nota_final": 3.1839999999999997,
+                        "estado_final": "aprobado"
+                    }
+                },
+                {
+                    "# de Identificacion": 55555,
+                    "nombres": "Freiler",
+                    "apellidos": "Ortega",
+                    "direccion": "Tibu",
+                    "acudiente": "No tiene",
+                    "Fijo": 12364,
+                    "Telefono": 1325469,
+                    "estado": "aprobado",
+                    "riesgo": "bajo",
+                    "nota_final": 3.75,
+                    "ruta_asignada": "java"
                 }
             ],
             "horarios": [
@@ -918,6 +1223,264 @@
                         "nota_final": 3.1839999999999997,
                         "estado_final": "aprobado"
                     }
+                },
+                {
+                    "# de Identificacion": 25489,
+                    "nombres": "freiler",
+                    "apellidos": "ortega",
+                    "direccion": "tibu",
+                    "acudiente": "no tiene",
+                    "Fijo": 4567,
+                    "Telefono": 145987,
+                    "estado": "aprobado",
+                    "riesgo": "bajo",
+                    "nota_final": 3.87,
+                    "ruta_asignada": "nodejs",
+                    "Fundamentos de Programacion": {
+                        "nota_teorica": 4.2,
+                        "nota_practica": 3.8,
+                        "promedio_pruebas": 3.54,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            2.9
+                        ],
+                        "promedio_quizes_trabajos": 2.9,
+                        "nota_final": 3.476,
+                        "estado_final": "aprobado"
+                    },
+                    "Programacion Web": {
+                        "nota_teorica": 4.6,
+                        "nota_practica": 4.8,
+                        "promedio_pruebas": 4.26,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            4.2
+                        ],
+                        "promedio_quizes_trabajos": 4.2,
+                        "nota_final": 4.2540000000000004,
+                        "estado_final": "aprobado"
+                    },
+                    "Programacion formal": {
+                        "nota_teorica": 2.1,
+                        "nota_practica": 2.0,
+                        "promedio_pruebas": 1.83,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            1.9
+                        ],
+                        "promedio_quizes_trabajos": 1.9,
+                        "nota_final": 1.837,
+                        "estado_final": "aprobado"
+                    },
+                    "Base de datos": {
+                        "nota_teorica": 4.8,
+                        "nota_practica": 4.9,
+                        "promedio_pruebas": 4.38,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            1.9
+                        ],
+                        "promedio_quizes_trabajos": 1.9,
+                        "nota_final": 4.132000000000001,
+                        "estado_final": "aprobado"
+                    },
+                    "Backend": {
+                        "nota_teorica": 4.2,
+                        "nota_practica": 1.3,
+                        "promedio_pruebas": 2.04,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            2.0
+                        ],
+                        "promedio_quizes_trabajos": 2.0,
+                        "nota_final": 2.036,
+                        "estado_final": "aprobado"
+                    }
+                },
+                {
+                    "# de Identificacion": 55555,
+                    "nombres": "Freiler",
+                    "apellidos": "Ortega",
+                    "direccion": "Tibu",
+                    "acudiente": "No tiene",
+                    "Fijo": 12364,
+                    "Telefono": 1325469,
+                    "estado": "aprobado",
+                    "riesgo": "bajo",
+                    "nota_final": 3.75,
+                    "ruta_asignada": "nodejs"
+                },
+                {
+                    "# de Identificacion": 25489,
+                    "nombres": "freiler",
+                    "apellidos": "ortega",
+                    "direccion": "tibu",
+                    "acudiente": "no tiene",
+                    "Fijo": 4567,
+                    "Telefono": 145987,
+                    "estado": "aprobado",
+                    "riesgo": "bajo",
+                    "nota_final": 3.87,
+                    "ruta_asignada": "nodejs",
+                    "Fundamentos de Programacion": {
+                        "nota_teorica": 4.2,
+                        "nota_practica": 3.8,
+                        "promedio_pruebas": 3.54,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            2.9
+                        ],
+                        "promedio_quizes_trabajos": 2.9,
+                        "nota_final": 3.476,
+                        "estado_final": "aprobado"
+                    },
+                    "Programacion Web": {
+                        "nota_teorica": 4.6,
+                        "nota_practica": 4.8,
+                        "promedio_pruebas": 4.26,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            4.2
+                        ],
+                        "promedio_quizes_trabajos": 4.2,
+                        "nota_final": 4.2540000000000004,
+                        "estado_final": "aprobado"
+                    },
+                    "Programacion formal": {
+                        "nota_teorica": 2.1,
+                        "nota_practica": 2.0,
+                        "promedio_pruebas": 1.83,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            1.9
+                        ],
+                        "promedio_quizes_trabajos": 1.9,
+                        "nota_final": 1.837,
+                        "estado_final": "aprobado"
+                    },
+                    "Base de datos": {
+                        "nota_teorica": 4.8,
+                        "nota_practica": 4.9,
+                        "promedio_pruebas": 4.38,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            1.9
+                        ],
+                        "promedio_quizes_trabajos": 1.9,
+                        "nota_final": 4.132000000000001,
+                        "estado_final": "aprobado"
+                    },
+                    "Backend": {
+                        "nota_teorica": 4.2,
+                        "nota_practica": 1.3,
+                        "promedio_pruebas": 2.04,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            2.0
+                        ],
+                        "promedio_quizes_trabajos": 2.0,
+                        "nota_final": 2.036,
+                        "estado_final": "aprobado"
+                    }
+                },
+                {
+                    "# de Identificacion": 109392543,
+                    "nombres": "Enrique",
+                    "apellidos": "Sandoval",
+                    "direccion": "no tiene",
+                    "acudiente": "no tiene",
+                    "Fijo": 153442,
+                    "Telefono": 3141335,
+                    "estado": "aprobado",
+                    "riesgo": "bajo",
+                    "nota_final": 3.5999999999999996,
+                    "ruta_asignada": "nodejs"
+                },
+                {
+                    "# de Identificacion": 25489,
+                    "nombres": "freiler",
+                    "apellidos": "ortega",
+                    "direccion": "tibu",
+                    "acudiente": "no tiene",
+                    "Fijo": 4567,
+                    "Telefono": 145987,
+                    "estado": "aprobado",
+                    "riesgo": "bajo",
+                    "nota_final": 3.87,
+                    "ruta_asignada": "nodejs",
+                    "Fundamentos de Programacion": {
+                        "nota_teorica": 4.2,
+                        "nota_practica": 3.8,
+                        "promedio_pruebas": 3.54,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            2.9
+                        ],
+                        "promedio_quizes_trabajos": 2.9,
+                        "nota_final": 3.476,
+                        "estado_final": "aprobado"
+                    },
+                    "Programacion Web": {
+                        "nota_teorica": 4.6,
+                        "nota_practica": 4.8,
+                        "promedio_pruebas": 4.26,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            4.2
+                        ],
+                        "promedio_quizes_trabajos": 4.2,
+                        "nota_final": 4.2540000000000004,
+                        "estado_final": "aprobado"
+                    },
+                    "Programacion formal": {
+                        "nota_teorica": 2.1,
+                        "nota_practica": 2.0,
+                        "promedio_pruebas": 1.83,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            1.9
+                        ],
+                        "promedio_quizes_trabajos": 1.9,
+                        "nota_final": 1.837,
+                        "estado_final": "aprobado"
+                    },
+                    "Base de datos": {
+                        "nota_teorica": 4.8,
+                        "nota_practica": 4.9,
+                        "promedio_pruebas": 4.38,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            1.9
+                        ],
+                        "promedio_quizes_trabajos": 1.9,
+                        "nota_final": 4.132000000000001,
+                        "estado_final": "aprobado"
+                    },
+                    "Backend": {
+                        "nota_teorica": 4.2,
+                        "nota_practica": 1.3,
+                        "promedio_pruebas": 2.04,
+                        "estado_pruebas": "aprobado",
+                        "quizes_trabajos": [
+                            2.0
+                        ],
+                        "promedio_quizes_trabajos": 2.0,
+                        "nota_final": 2.036,
+                        "estado_final": "aprobado"
+                    }
+                },
+                {
+                    "# de Identificacion": 109392543,
+                    "nombres": "Enrique",
+                    "apellidos": "Sandoval",
+                    "direccion": "no tiene",
+                    "acudiente": "no tiene",
+                    "Fijo": 153442,
+                    "Telefono": 3141335,
+                    "estado": "aprobado",
+                    "riesgo": "bajo",
+                    "nota_final": 3.5999999999999996,
+                    "ruta_asignada": "nodejs"
                 }
             ],
             "horarios": [
