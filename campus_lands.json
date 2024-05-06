@@ -181,6 +181,9 @@
             "rutas_asignadas": [
                 "java",
                 "nodejs"
+            ],
+            "horarios": [
+                "8:00 am - 12:00 pm"
             ]
         },
         {
@@ -199,6 +202,9 @@
             "rutas_asignadas": [
                 "java",
                 "nodejs"
+            ],
+            "horarios": [
+                "1:00 pm - 5:00 pm"
             ]
         },
         {
@@ -984,7 +990,7 @@
                 }
             ],
             "horarios": [
-                "8:00 am - 12:00 pm"
+                "2"
             ]
         },
         {
